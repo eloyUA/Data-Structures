@@ -14,7 +14,9 @@ a linked list (obviously dynamic) and a dictionary.
 First, we need to know that all data structures in this repository are modules. Therefore, we need another C file to execute them.
 So, if we want to compile this file 'main.c' and use the dynamic stack module:
 
-```git clone https://github.com/eloyUA/Data-Structures```
-```cd dinamicStack```
-```gcc -c dinamicStack.c```
-```gcc [path of the main.c] dinamicStack.o -o nameProgram```
+```
+git clone https://github.com/eloyUA/Data-Structures
+cd dinamicStack
+gcc -c dinamicStack.c
+gcc [path of the main.c] dinamicStack.o -o nameProgram
+```
