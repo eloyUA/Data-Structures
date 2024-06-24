@@ -1,5 +1,5 @@
 # Data-Structures
-In this repository, there are data structures such as static stack, dinamic stack, static queue, dinamic queue...
+In this repository, there are data structures such as static stack, dynamic stack, static queue, dynamic queue...
 
 ## Table of Contents
 1. [General information](#general-information)
@@ -7,7 +7,7 @@ In this repository, there are data structures such as static stack, dinamic stac
 
 ### General information
 An data structure, is an implementation of all the functions to store data in different forms.
-For example, in this repository, we have a stack (dinamic and static), a queue (dinamic and static),
+For example, in this repository, we have a stack (dynamic and static), a queue (dynamic and static),
 a linked list (obviously dynamic) and a dictionary.
 
 ### Installation
