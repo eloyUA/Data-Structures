@@ -6,7 +6,7 @@ In this repository, there are data structures such as static stack, dinamic stac
 2. [Installation](#installation)
 
 ### General information
-An data structur, is an implemntation of all the functions to store data in different forms.
+An data structure, is an implementation of all the functions to store data in different forms.
 For example, in this repository, we have a stack (dinamic and static), a queue (dinamic and static),
 a linked list (obviously dynamic) and a dictionary.
 
