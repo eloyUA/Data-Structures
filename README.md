@@ -16,7 +16,7 @@ So, if we want to compile this file 'main.c' and use the dynamic stack module:
 
 ```
 git clone https://github.com/eloyUA/Data-Structures
-cd Data-Structures/dinamicStack
-gcc -c dinamicStack.c
-gcc [path of the main.c] dinamicStack.o -o nameProgram
+cd Data-Structures/dynamicStack
+gcc -c dynamicStack.c
+gcc [path of the main.c] dynamicStack.o -o nameProgram
 ```
