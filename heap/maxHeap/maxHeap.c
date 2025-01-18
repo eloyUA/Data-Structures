@@ -11,9 +11,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void errorMaxHeap(char *msg) {
-    perror("ERROR in maxHeap.c: %s\n");
-    exit(1);
+void errorMaxHeap(char *msgError) {
+    char msg[512];
+	snprintf(msg, sizeof(msg), "ERROR, in the module maxHeap: %s", msgError);
+	perror(msg);
+	exit(1);
 }
 
 /**

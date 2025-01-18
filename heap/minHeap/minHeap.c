@@ -11,9 +11,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void errorMinHeap(char *msg) {
-    perror("ERROR in minHeap.c: %s\n");
-    exit(1);
+void errorMinHeap(char *msgError) {
+    char msg[512];
+	snprintf(msg, sizeof(msg), "ERROR, in the module minHeap: %s", msgError);
+	perror(msg);
+	exit(1);
 }
 
 /**
