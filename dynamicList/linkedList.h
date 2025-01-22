@@ -1,12 +1,15 @@
-#ifndef _DYNAMIC_LIST_H
-#define _DYNAMIC_LIST_H
+#ifndef _LINKED_LIST_H
+#define _LINKED_LIST_H
 
 /**
- * MODULE: dynamicList
- * FILE: dynamicList.h
- * VERSION: 1.0.0
- * HISTORICAL: Created by Eloy Urriens Arpal on 11/6/2024.
- * DESCRIPTION: This module is the implement of the dynamic list/vector/array.
+ * MODULE: linkedList
+ * FILE: linkedList.h
+ * VERSION: 1.0.1
+ * HISTORICAL: 
+ *      Created by Eloy Urriens Arpal on 11/6/2024, version 1.0.0
+ *      Modified by Eloy Urriens Arpal on 22/22/2025, version 1.0.1
+ *          Some names are changed.
+ * DESCRIPTION: This module is the implement of the linked list.
  * CC: BY SA
  */
 
@@ -18,62 +21,62 @@ typedef struct node {
 typedef struct {
     unsigned long long n_elem;
     node *first, *last;
-} dynamicList;
+} linkedList;
 
 /**
- * FUNCTION: newDynamicList
+ * FUNCTION: newLinkedList
  * INPUT: None.
  * REQUIREMENTS: None.
  * OUTPUT: An empty dynamic list.
  */
-void newDynamicList(dynamicList *);
+void newLinkedList(linkedList *);
 
 /**
- * FUNCTION: appendDynamicList
+ * FUNCTION: appendLinkedList
  * INPUT: A dynamic list and an element (float).
  * REQUIREMENTS: The length of dynamic list < 2^64
  * MODIFIES: Add the element (float) to the end of the dynamic list.
  */
-void appendDynamicList(dynamicList *, float);
+void appendLinkedList(linkedList *, float);
 
 /**
- * FUNCTION: insertDynamicList
+ * FUNCTION: insertLinkedList
  * INPUT: A dynamic list, a position and an element (float).
  * REQUIREMENTS: The length of dynamic list < 2^64, 0 <= position < length of dinamic list
  * MODIFIES: Add the element (float) at the position.
  */
-void insertDynamicList(dynamicList *, unsigned long long, float);
+void insertLinkedList(linkedList *, unsigned long long, float);
 
 /**
- * FUNCTION: deleteDynamicList
+ * FUNCTION: deleteLinkedList
  * INPUT: A dynamic list and a position (unsigned long long).
- * REQUIREMENTS: 0 <= position < lengthDynamicList(list)
+ * REQUIREMENTS: 0 <= position < lengthLinkedList(list)
  * MODIFIES: Delete the element and the position.
  */
-void deleteDynamicList(dynamicList *, unsigned long long);
+void deleteLinkedList(linkedList *, unsigned long long);
 
 /**
- * FUNCTION: changeElemDynamicList
+ * FUNCTION: changeElemLinkedList
  * INPUT: A dynamic list, a position (unsigned long long), and an element (float).
- * REQUIREMENTS: 0 <= position < lengthDynamicList(list).
+ * REQUIREMENTS: 0 <= position < lengthLinkedList(list).
  * MODIFIES: Change the value of the element at the position.
  */
-void changeElemDynamicList(dynamicList *, unsigned long long, float);
+void changeElemLinkedList(linkedList *, unsigned long long, float);
 
 /**
- * FUNCTION: consultElemDynamicList
+ * FUNCTION: consultElemLinkedList
  * INPUT: A dynamic list, and a position (unsigned long long).
- * REQUIREMENTS: 0 <= position < lengthDynamicList(list).
+ * REQUIREMENTS: 0 <= position < lengthLinkedList(list).
  * OUTPUT: The element (float) at the position.
  */
-float consultElemDynamicList(dynamicList, unsigned long long);
+float consultElemLinkedList(linkedList, unsigned long long);
 
 /**
- * FUNCTION: lengthDynamicList
+ * FUNCTION: lengthLinkedList
  * INPUT: A dynamic list.
  * REQUIREMENTS: None.
  * OUTPUT: The length of the dynamic list.
  */
-unsigned long long lengthDynamicList(dynamicList);
+unsigned long long lengthLinkedList(linkedList);
 
 #endif

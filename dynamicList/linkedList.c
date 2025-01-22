@@ -1,63 +1,66 @@
 /**
- * MODULE: dynamicList
- * FILE: dynamicList.c
- * VERSION: 1.0.0
- * HISTORICAL: Created by Eloy Urriens Arpal on 11/6/2024.
- * DESCRIPTION: This module is the implement of the dynamic list/vector/array.
+ * MODULE: linkedList
+ * FILE: linkedList.c
+ * VERSION: 1.0.1
+ * HISTORICAL: 
+ *      Created by Eloy Urriens Arpal on 11/6/2024, version 1.0.0
+ *      Modified by Eloy Urriens Arpal on 22/22/2025, version 1.0.1
+ *          Some names are changed.
+ * DESCRIPTION: This module is the implement of the linked list.
  * CC: BY SA
  */
 
-#include "dynamicList.h"
+#include "linkedList.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 
 /**
- * FUNCTION: errorDynamicList
+ * FUNCTION: errorLinkedList
  * INPUT: Error message.
  * REQUIREMENTS: None
  * MODIFIES: Finish the program.
 */
-void errorDynamicList(char error[]) {
-    printf("\n\n\nERROR in the module dynamicList: %s\n", error);
+void errorLinkedList(char error[]) {
+    printf("\n\n\nERROR in the module linkedList: %s\n", error);
     while (true) {
         exit(-1);
     }
 }
 
 /**
- * FUNCTION: newDynamicList
+ * FUNCTION: newLinkedList
  * INPUT: None.
  * REQUIREMENTS: None.
  * OUTPUT: An empty dynamic list.
  */
-void newDynamicList(dynamicList *l) {
+void newLinkedList(linkedList *l) {
     l->first = NULL;
     l->last = NULL;
     l->n_elem = 0;
 }
 
 /**
- * FUNCTION: appendDynamicList
+ * FUNCTION: appendLinkedList
  * INPUT: A dynamic list and an element (float).
  * REQUIREMENTS: The length of dynamic list < 2^63 - 1
  * MODIFIES: Add the element (float) to the end of the dynamic list.
  */
-void appendDynamicList(dynamicList *l, float elem) {
+void appendLinkedList(linkedList *l, float elem) {
     node *aux;
 
     unsigned long long lim = 9223372036854775807; // 2^63 - 1
     aux = malloc(sizeof(node));
     if (aux == NULL) {
-        errorDynamicList("There isn't more memory to add an element to the list.");
+        errorLinkedList("There isn't more memory to add an element to the list.");
     }
-    else if (lengthDynamicList(*l) >= lim) {
-        errorDynamicList("The list is too large.");
+    else if (lengthLinkedList(*l) >= lim) {
+        errorLinkedList("The list is too large.");
     }
     
     aux->element = elem;
     aux->next = NULL;
-    if (lengthDynamicList(*l) == 0) {
+    if (lengthLinkedList(*l) == 0) {
         l->first = aux;
         l->last = aux;
     }
@@ -72,16 +75,16 @@ void appendDynamicList(dynamicList *l, float elem) {
 /**
  * FUNCTION: searchPos
  * INPUT: A dynamic list and a position (unsigned long long).
- * REQUIREMENTS: lengthDynamicList(list) > 1 and 0 < position < lengthDynamicList(list)
+ * REQUIREMENTS: lengthLinkedList(list) > 1 and 0 < position < lengthLinkedList(list)
  * OUTPUT: current = A pointer to the memory address of the node whose position is pos.
  *      previous = A pointer to the memory address of the previous node whose position is pos.
  */
-void searchPos(node **current, node **previous, dynamicList l, unsigned long long pos) {
-    if (lengthDynamicList(l) <= 1) {
-        errorDynamicList("A position can't be searched in an empty list or with one element.");
+void searchPos(node **current, node **previous, linkedList l, unsigned long long pos) {
+    if (lengthLinkedList(l) <= 1) {
+        errorLinkedList("A position can't be searched in an empty list or with one element.");
     }
-    else if (pos <= 0 || pos >= lengthDynamicList(l)) {
-        errorDynamicList("The position is out of range. The position can't be searched.");
+    else if (pos <= 0 || pos >= lengthLinkedList(l)) {
+        errorLinkedList("The position is out of range. The position can't be searched.");
     }
 
     unsigned long long count;
@@ -97,17 +100,17 @@ void searchPos(node **current, node **previous, dynamicList l, unsigned long lon
 }
 
 /**
- * FUNCTION: insertDynamicList
+ * FUNCTION: insertLinkedList
  * INPUT: A dynamic list, a position and an element (float).
  * REQUIREMENTS: 0 < length of dynamic list < 2^64, 0 <= position < length of dinamic list
  * MODIFIES: Add the element (float) at the position.
  */
-void insertDynamicList(dynamicList *l, unsigned long long pos, float elem) {
-    if (lengthDynamicList(*l) == 0) {
-        errorDynamicList("The element cannot be added at the position because the list is empty.");
+void insertLinkedList(linkedList *l, unsigned long long pos, float elem) {
+    if (lengthLinkedList(*l) == 0) {
+        errorLinkedList("The element cannot be added at the position because the list is empty.");
     }
-    else if (pos < 0 || pos >= lengthDynamicList(*l)) {
-        errorDynamicList("The position is out of range. The element can't be added.");
+    else if (pos < 0 || pos >= lengthLinkedList(*l)) {
+        errorLinkedList("The position is out of range. The element can't be added.");
     }
 
     node *aux, *current, *previous;
@@ -127,21 +130,21 @@ void insertDynamicList(dynamicList *l, unsigned long long pos, float elem) {
 }
 
 /**
- * FUNCTION: deleteDynamicList
+ * FUNCTION: deleteLinkedList
  * INPUT: A dynamic list and a position (unsigned long long).
- * REQUIREMENTS: 0 <= position < lengthDynamicList(list) and lengthDynamicList(list) > 0
+ * REQUIREMENTS: 0 <= position < lengthLinkedList(list) and lengthLinkedList(list) > 0
  * MODIFIES: Delete the element and the position.
  */
-void deleteDynamicList(dynamicList *l, unsigned long long pos) {
-    if (lengthDynamicList(*l) == 0) {
-        errorDynamicList("An element can't be deleted from an empty list.");
+void deleteLinkedList(linkedList *l, unsigned long long pos) {
+    if (lengthLinkedList(*l) == 0) {
+        errorLinkedList("An element can't be deleted from an empty list.");
     }
-    else if (pos < 0 || pos >= lengthDynamicList(*l)) {
-        errorDynamicList("The position is out of range. The element can't be deleted.");
+    else if (pos < 0 || pos >= lengthLinkedList(*l)) {
+        errorLinkedList("The position is out of range. The element can't be deleted.");
     }
 
     node *current, *previous;
-    if (lengthDynamicList(*l) == 1) {
+    if (lengthLinkedList(*l) == 1) {
         free(l->first);
         l->first = NULL;
         l->last = NULL;
@@ -167,21 +170,21 @@ void deleteDynamicList(dynamicList *l, unsigned long long pos) {
 }
 
 /**
- * FUNCTION: changeElemDynamicList
+ * FUNCTION: changeElemLinkedList
  * INPUT: A dynamic list, a position (unsigned long long), and an element (float).
- * REQUIREMENTS: 0 <= position < lengthDynamicList(list) and lengthDynamicList(list) > 0
+ * REQUIREMENTS: 0 <= position < lengthLinkedList(list) and lengthLinkedList(list) > 0
  * MODIFIES: Change the value of the element at the position.
  */
-void changeElemDynamicList(dynamicList *l, unsigned long long pos, float elem) {
-    if (lengthDynamicList(*l) == 0) {
-        errorDynamicList("An element can't be changed in an empty list.");
+void changeElemLinkedList(linkedList *l, unsigned long long pos, float elem) {
+    if (lengthLinkedList(*l) == 0) {
+        errorLinkedList("An element can't be changed in an empty list.");
     }
-    else if (pos < 0 || pos >= lengthDynamicList(*l)) {
-        errorDynamicList("The position is out of range. The element can't be changed.");
+    else if (pos < 0 || pos >= lengthLinkedList(*l)) {
+        errorLinkedList("The position is out of range. The element can't be changed.");
     }
 
     node *current, *previous;
-    if (lengthDynamicList(*l) == 1 || pos == 0) {
+    if (lengthLinkedList(*l) == 1 || pos == 0) {
         (l->first)->element = elem;
     }
     else {
@@ -191,22 +194,22 @@ void changeElemDynamicList(dynamicList *l, unsigned long long pos, float elem) {
 }
 
 /**
- * FUNCTION: consultElemDynamicList
+ * FUNCTION: consultElemLinkedList
  * INPUT: A dynamic list, and a position (unsigned long long).
- * REQUIREMENTS: 0 <= position < lengthDynamicList(list) and lengthDynamicList(list) > 0
+ * REQUIREMENTS: 0 <= position < lengthLinkedList(list) and lengthLinkedList(list) > 0
  * OUTPUT: The element (float) at the position.
  */
-float consultElemDynamicList(dynamicList l, unsigned long long pos) {
-    if (lengthDynamicList(l) == 0) {
-        errorDynamicList("An element can't be consulted in an empty list.");
+float consultElemLinkedList(linkedList l, unsigned long long pos) {
+    if (lengthLinkedList(l) == 0) {
+        errorLinkedList("An element can't be consulted in an empty list.");
     }
-    else if (pos < 0 || pos >= lengthDynamicList(l)) {
-        errorDynamicList("The position is out of range. The element can't be consulted.");
+    else if (pos < 0 || pos >= lengthLinkedList(l)) {
+        errorLinkedList("The position is out of range. The element can't be consulted.");
     }
 
     float elem;
     node *current, *previous;
-    if (lengthDynamicList(l) == 1 || pos == 0) {
+    if (lengthLinkedList(l) == 1 || pos == 0) {
         elem = (l.first)->element;
     }
     else {
@@ -218,11 +221,11 @@ float consultElemDynamicList(dynamicList l, unsigned long long pos) {
 }
 
 /**
- * FUNCTION: lengthDynamicList
+ * FUNCTION: lengthLinkedList
  * INPUT: A dynamic list.
  * REQUIREMENTS: None.
  * OUTPUT: The length of the dynamic list.
  */
-unsigned long long lengthDynamicList(dynamicList l) {
+unsigned long long lengthLinkedList(linkedList l) {
     return l.n_elem;
 }
