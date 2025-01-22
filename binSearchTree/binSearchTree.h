@@ -1,6 +1,16 @@
 #ifndef _BIN_SEARCH_TREE_H
 #define _BIN_SEARCH_TREE_H
 
+/**
+ * MODULE: binSearchTree
+ * FILE: binSearchTree.h
+ * VERSION: 1.0.0
+ * HISTORICAL: 
+ *      Created by Eloy Urriens Arpal on 18/1/2025, version 1.0.0
+ * DESCRIPTION: This module is the implement of the binary search tree.
+ * CC: BY SA
+ */
+
 #include <stdbool.h>
 
 typedef int typeElem; // It has to be a number
