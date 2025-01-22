@@ -1,6 +1,16 @@
 #ifndef _STATIC_GRAPH_H
 #define _STATIC_GRAPH_H
 
+/**
+ * MODULE: staticGraph
+ * FILE: staticGraph.h
+ * VERSION: 1.0.0
+ * HISTORICAL: 
+ *      Created by Eloy Urriens Arpal on 22/1/2025, version 1.0.0
+ * DESCRIPTION: This module is the implement of the graph.
+ * CC: BY SA
+ */
+
 #include <stdbool.h>
 
 typedef float vertexValueType;

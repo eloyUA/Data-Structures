@@ -1,3 +1,13 @@
+/**
+ * MODULE: staticGraph
+ * FILE: staticGraph.c
+ * VERSION: 1.0.0
+ * HISTORICAL: 
+ *      Created by Eloy Urriens Arpal on 22/1/2025, version 1.0.0
+ * DESCRIPTION: This module is the implement of the graph.
+ * CC: BY SA
+ */
+
 #include "staticGraph.h"
 #include <stdio.h>
 #include <stdlib.h>
