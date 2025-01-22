@@ -1,13 +1,16 @@
 /**
- * MODULE: dictionary
- * FILE: dictionary.h
- * VERSION: 1.0.0
- * HISTORICAL: Created by Eloy Urriens Arpal on 18/6/2024
- * DESCRIPTION: This module is the implement of a dictionary.
+ * MODULE: hashTable
+ * FILE: hashTable.c
+ * VERSION: 1.0.1
+ * HISTORICAL: 
+ *      Created by Eloy Urriens Arpal on 18/6/2024, version 1.0.0
+ *      Modifies by Eloy Urriens Arpal on 22/1/2024, version 1.0.1:
+ *          Some names have been changed.
+ * DESCRIPTION: This module is the implement of a hashTable.
  * CC: BY SA
  */
 
-#include "dictionary.h"
+#include "hashTable.h"
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
@@ -16,25 +19,25 @@
 #define FNV_PRIME 0x100000001b3
 
 /**
- * FUNCTION: errorDictionary
+ * FUNCTION: errorHashTable
  * INPUT: A error message.
  * REQUIREMENTS: None.
  * MODIFIES: Exit the program.
  */
-void errorDictionary(char error[]) {
-    printf("\n\n\nERROR in the module dictionary: %s\n", error);
+void errorHashTable(char error[]) {
+    printf("\n\n\nERROR in the module hashTable: %s\n", error);
     while (true) {
         exit(-1);
     }
 }
 
 /**
- * FUNCTION: newDictionary
+ * FUNCTION: newHashTable
  * INPUT: None.
  * REQUIREMENTS: None.
- * OUTPUT: A dictionary.
+ * OUTPUT: A hashTable.
  */
-void newDictionary(Dictionary d) {
+void newHashTable(HashTable d) {
     for (int i = 0; i < N; i++) {
         d[i] = NULL;
     }
@@ -59,13 +62,13 @@ unsigned long long hashFunctionFNV1(char key[]) {
 }
 
 /**
- * FUNCTION: loadElemDictionary
- * INPUT: A dictionary, a key and a real number.
+ * FUNCTION: loadElemHashTable
+ * INPUT: A hashTable, a key and a real number.
  * REQUIREMENTS: None.
  * MODIFIES: The element, whose key is key (char[]), is modificated or created by the
  *      new real number.
  */
-void loadElemDictionary(Dictionary d, char key[], float value) {
+void loadElemHashTable(HashTable d, char key[], float value) {
     unsigned long long pos;
 
     pos = hashFunctionFNV1(key) % N;
@@ -96,17 +99,17 @@ void loadElemDictionary(Dictionary d, char key[], float value) {
 }
 
 /**
- * FUNCTION: downloadElemDictionary
- * INPUT: A dictionary, a key.
+ * FUNCTION: downloadElemHashTable
+ * INPUT: A hashTable, a key.
  * REQUIREMENTS: The key must be associated with an element.
  * OUTPUT: The element (float) that is associated with the key.
  */
-void downloadElemDictionary(Dictionary d, char key[], float *value) {
+void downloadElemHashTable(HashTable d, char key[], float *value) {
     unsigned long long pos;
 
     pos = hashFunctionFNV1(key) % N;
     if (d[pos] == NULL) {
-        errorDictionary("The key isn't associated with any value.");
+        errorHashTable("The key isn't associated with any value.");
     }
     else {
         node *aux;
@@ -117,7 +120,7 @@ void downloadElemDictionary(Dictionary d, char key[], float *value) {
         }
 
         if (strcmp(aux->key, key) != 0) {
-            errorDictionary("The key isn't associated with any value.");
+            errorHashTable("The key isn't associated with any value.");
         }
         else {
             *value = aux->value;
@@ -126,22 +129,22 @@ void downloadElemDictionary(Dictionary d, char key[], float *value) {
 }
 
 /**
- * FUNCTION: deleteElemDictionary
- * INPUT: A dictionary, a key.
+ * FUNCTION: deleteElemHashTable
+ * INPUT: A hashTable, a key.
  * REQUIREMENTS: The key must be associated with an element.
  * MODIFIES: Delete the element that is associated with the key.
  */
-void deleteElemDictionary(Dictionary d, char key[]) {
+void deleteElemHashTable(HashTable d, char key[]) {
     unsigned long long pos;
 
     pos = hashFunctionFNV1(key) % N;
     if (d[pos] == NULL) {
-        errorDictionary("The key isn't associated with any value.");
+        errorHashTable("The key isn't associated with any value.");
     }
     else {
         if (d[pos]->next == NULL) {
             if (strcmp(d[pos]->key, key) != 0) {
-                errorDictionary("The key isn't associated with any value.");
+                errorHashTable("The key isn't associated with any value.");
             }
             else {
                 free(d[pos]);
@@ -159,7 +162,7 @@ void deleteElemDictionary(Dictionary d, char key[]) {
             }
 
             if (strcmp(current->key, key) != 0) {
-                errorDictionary("The key isn't associated with any value.");
+                errorHashTable("The key isn't associated with any value.");
             }
             else {
                 previous->next = current->next;
@@ -171,11 +174,11 @@ void deleteElemDictionary(Dictionary d, char key[]) {
 
 /**
  * FUNCTION: isAssociated
- * INPUT: A dictionary, a key.
+ * INPUT: A hashTable, a key.
  * REQUIREMENTS: None.
  * OUTPUT: True <=> The key is associated with some value.
  */
-bool isAssociated(Dictionary d, char key[]) {
+bool isAssociated(HashTable d, char key[]) {
     bool associated;
     unsigned long long pos;
 
