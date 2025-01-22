@@ -8,7 +8,7 @@ In this repository, there are data structures such as static stack, dynamic stac
 ### General information
 An data structure, is an implementation of all the functions to store data in different forms.
 For example, in this repository, we have a stack (dynamic and static), a queue (dynamic and static),
-a linked list (obviously dynamic) and a dictionary.
+a linked list (obviously dynamic), a hash table, max/min-heap, a binary search tree and a graph.
 
 ### Installation
 First, we need to know that all data structures in this repository are modules. Therefore, we need another C file to execute them.
