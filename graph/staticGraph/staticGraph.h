@@ -47,7 +47,8 @@ void newStaticGraph(staticGraph *, int);
  * REQUIREMENTS: 
  *      The id vertex has to be unique (The vertex doesn't exist yet)
  *      0 <= id vertex < maximum number of vertices
- *      The number of the vertices currently < The maximum number of the vertices in the graph (The graph isn't full)
+ *      The number of the vertices currently < The maximum number of the vertices
+ *      in the graph (The graph isn't full)
  * OUTPUT: The graph with the vertex.
  */
 void addVertexStaticGraph(staticGraph *, int);
@@ -116,7 +117,8 @@ void removeEdgeStaticGraph(staticGraph *, int, int);
  * REQUIREMENTS: 
  *      0 <= idVertex, idVertex < maximum number of vertices
  *      The edge has to exist.
- * MODIFIES: The edgeValueType of the edge that connects the vertices (int, int) is set
+ * MODIFIES:
+ *      The edgeValueType of the edge that connects the vertices (int, int) is set
  */
 void setEdgeValueStaticGraph(staticGraph *, int, int, edgeValueType);
 
@@ -164,20 +166,31 @@ int getNumberOfEdgesCurrentlyStaticGraph(staticGraph);
 
 /**
  * FUNCTION: getNeighborsStaticGraph
- * INPUT: A neighbors array, a lenght of the neighbors array, graph and the idVertex (int)
- * REQUIREMENTS: The lenght of the neighbors array >= The number of vertices currently in the graph
+ * INPUT: 
+ *      A neighbors array, a lenght of the neighbors array,
+ *      graph and the idVertex (int)
+ * REQUIREMENTS:
+ *      The lenght of the neighbors array >= The number of vertices currently
  * MODIFIES: 
  *      The int array (neighbors) with idsVertex connected to idVertex (int).
  *      The nNeighbors (int *) in the array.
  * EXAMPLE:
  *      The neighbors of idVertex = 3:
  *      int neighbors[getNumberOfVerticesCurrentlyStaticGraph(graph)]; // Reserved
- *      getNeighborsStaticGraph(&nNeighbors, neighbors, getNumberOfVerticesCurrentlyStaticGraph(graph), graph, 3);
+ *      getNeighborsStaticGraph(
+ *          &nNeighbors,
+ *          neighbors,
+ *          getNumberOfVerticesCurrentlyStaticGraph(graph),
+ *          graph,
+ *          3
+ *      );
  *      Output (it has 5 neighbors):
- *          neighbors = [idVertex0, idVertex1, idVertex2, idVertex3, idVertex4, randomNumber, ..., randomNumber]
+ *          neighbors = [idVertex0, idVertex1, idVertex2, idVertex3,
+ *                      idVertex4, randomNumber, ..., randomNumber]
  *          nNeighbors = 5
  */
-void getNeighborsStaticGraph(int *nNeighbors, int *neighArray, int lenght, staticGraph, int idVertex);
+void getNeighborsStaticGraph(int *nNeighbors, int *neighArray, int lenght,
+                            staticGraph, int idVertex);
 
 /**
  * FUNCTION: freeMemoryStaticGraph

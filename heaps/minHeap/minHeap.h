@@ -6,7 +6,8 @@
  * FILE: minHeap.h
  * VERSION: 1.0.0
  * HISTORICAL: Created by Eloy Urriens on 16/1/2025
- * DESCRIPTION: This module is a min-heap. For more information: https://en.wikipedia.org/wiki/Min-max_heap
+ * DESCRIPTION: This module is a min-heap.
+ *      For more information: https://en.wikipedia.org/wiki/Min-max_heap
  * CC: SA BY
  */
 

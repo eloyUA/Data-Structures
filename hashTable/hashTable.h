@@ -38,7 +38,8 @@ void newHashTable(HashTable);
  * FUNCTION: loadElemHashTable
  * INPUT: A hashTable, a key and a real number.
  * REQUIREMENTS: None.
- * MODIFIES: The element, whose key is key (char[]), is modificated or created by the
+ * MODIFIES:
+ *      The element, whose key is key (char[]), is modificated or created by the
  *      new real number.
  */
 void loadElemHashTable(HashTable, char[], float);

@@ -24,23 +24,11 @@ void errorDynamicQueue(char error[]) {
     }
 }
 
-/**
- * FUNCTION: newDynamicQueue
- * INPUT: None
- * REQUIREMENTS: None
- * OUTPUT: An empty dynamic queue.
-*/
 void newDynamicQueue(dynamicQueue *q) {
     q->first = NULL;
     q->last = NULL;
 }
 
-/**
- * FUNCTION: enqueueDynamicQueue
- * INPUT: A queue and a number (float).
- * REQUIREMENTS: The queue had to be initialized.
- * MODIFIES: The back of the queue is the number.
-*/
 void enqueueDynamicQueue(dynamicQueue *q, float n) {
     node *aux;
 
@@ -61,13 +49,6 @@ void enqueueDynamicQueue(dynamicQueue *q, float n) {
     }
 }
 
-/**
- * FUNCTION: dequeueDynamicQueue
- * INPUT: A queue.
- * REQUIREMENTS: The queue had to be initialized and
- *      the queue doesn't have to be empty.
- * MODIFIES: Delete the number at the front.
-*/
 void dequeueDynamicQueue(dynamicQueue *q) {
     if (isEmptyDynamicQueue(*q)) {
         errorDynamicQueue("Can't dequeue an element from an empty queue.");
@@ -83,23 +64,10 @@ void dequeueDynamicQueue(dynamicQueue *q) {
     free(aux);
 }
 
-/**
- * FUNCTION: firstDynamicQueue
- * INPUT: A queue.
- * REQUIREMENTS: The queue had to be initialized and
- *      the queue doesn't have to be empty.
- * OUTPUT: The number at the front.
-*/
 float firstDynamicQueue(dynamicQueue q) {
     return (q.first)->element;
 }
 
-/**
- * FUNCTION: isEmptyDynamicQueue
- * INPUT: A queue.
- * REQUIREMENTS: The queue had to be initialized.
- * OUTPUT: Empty queue <=> True
-*/
 bool isEmptyDynamicQueue(dynamicQueue q) {
     return q.first == NULL && q.last == NULL;
 }

@@ -38,7 +38,9 @@ void insertBinSearchTree(BinSearchTree *, typeElem);
  * FUNCTION: deleteBinSearchTree
  * INPUT: A binSearchTree and an element.
  * REQUIREMENTS: The binSearchTree isn't empty.
- * OUTPUT: The binSearchTree without the element. (If the element is in the binSearchTree)
+ * OUTPUT:
+ *      The binSearchTree without the element.
+ *      (If the element is in the binSearchTree).
  */
 void deleteBinSearchTree(BinSearchTree *, typeElem);
 

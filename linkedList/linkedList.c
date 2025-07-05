@@ -28,24 +28,12 @@ void errorLinkedList(char error[]) {
     }
 }
 
-/**
- * FUNCTION: newLinkedList
- * INPUT: None.
- * REQUIREMENTS: None.
- * OUTPUT: An empty dynamic list.
- */
 void newLinkedList(linkedList *l) {
     l->first = NULL;
     l->last = NULL;
     l->n_elem = 0;
 }
 
-/**
- * FUNCTION: appendLinkedList
- * INPUT: A dynamic list and an element (float).
- * REQUIREMENTS: The length of dynamic list < 2^63 - 1
- * MODIFIES: Add the element (float) to the end of the dynamic list.
- */
 void appendLinkedList(linkedList *l, float elem) {
     node *aux;
 
@@ -75,13 +63,17 @@ void appendLinkedList(linkedList *l, float elem) {
 /**
  * FUNCTION: searchPos
  * INPUT: A dynamic list and a position (unsigned long long).
- * REQUIREMENTS: lengthLinkedList(list) > 1 and 0 < position < lengthLinkedList(list)
- * OUTPUT: current = A pointer to the memory address of the node whose position is pos.
- *      previous = A pointer to the memory address of the previous node whose position is pos.
+ * REQUIREMENTS: 
+ *      lengthLinkedList(list) > 1 and 0 < position < lengthLinkedList(list)
+ * OUTPUT:
+ *      current = A pointer to the memory address of the node whose position is pos.
+ *      previous = A pointer to the memory address of the previous node whose
+ *      position is pos.
  */
 void searchPos(node **current, node **previous, linkedList l, unsigned long long pos) {
     if (lengthLinkedList(l) <= 1) {
-        errorLinkedList("A position can't be searched in an empty list or with one element.");
+        errorLinkedList(
+            "A position can't be searched in an empty list or with one element.");
     }
     else if (pos <= 0 || pos >= lengthLinkedList(l)) {
         errorLinkedList("The position is out of range. The position can't be searched.");
@@ -99,15 +91,10 @@ void searchPos(node **current, node **previous, linkedList l, unsigned long long
     }
 }
 
-/**
- * FUNCTION: insertLinkedList
- * INPUT: A dynamic list, a position and an element (float).
- * REQUIREMENTS: 0 < length of dynamic list < 2^64, 0 <= position < length of dinamic list
- * MODIFIES: Add the element (float) at the position.
- */
 void insertLinkedList(linkedList *l, unsigned long long pos, float elem) {
     if (lengthLinkedList(*l) == 0) {
-        errorLinkedList("The element cannot be added at the position because the list is empty.");
+        errorLinkedList(
+            "The element cannot be added at the position because the list is empty.");
     }
     else if (pos < 0 || pos >= lengthLinkedList(*l)) {
         errorLinkedList("The position is out of range. The element can't be added.");
@@ -129,12 +116,6 @@ void insertLinkedList(linkedList *l, unsigned long long pos, float elem) {
     l->n_elem = l->n_elem + 1;
 }
 
-/**
- * FUNCTION: deleteLinkedList
- * INPUT: A dynamic list and a position (unsigned long long).
- * REQUIREMENTS: 0 <= position < lengthLinkedList(list) and lengthLinkedList(list) > 0
- * MODIFIES: Delete the element and the position.
- */
 void deleteLinkedList(linkedList *l, unsigned long long pos) {
     if (lengthLinkedList(*l) == 0) {
         errorLinkedList("An element can't be deleted from an empty list.");
@@ -169,12 +150,6 @@ void deleteLinkedList(linkedList *l, unsigned long long pos) {
     l->n_elem = l->n_elem - 1;
 }
 
-/**
- * FUNCTION: changeElemLinkedList
- * INPUT: A dynamic list, a position (unsigned long long), and an element (float).
- * REQUIREMENTS: 0 <= position < lengthLinkedList(list) and lengthLinkedList(list) > 0
- * MODIFIES: Change the value of the element at the position.
- */
 void changeElemLinkedList(linkedList *l, unsigned long long pos, float elem) {
     if (lengthLinkedList(*l) == 0) {
         errorLinkedList("An element can't be changed in an empty list.");
@@ -193,12 +168,6 @@ void changeElemLinkedList(linkedList *l, unsigned long long pos, float elem) {
     }
 }
 
-/**
- * FUNCTION: consultElemLinkedList
- * INPUT: A dynamic list, and a position (unsigned long long).
- * REQUIREMENTS: 0 <= position < lengthLinkedList(list) and lengthLinkedList(list) > 0
- * OUTPUT: The element (float) at the position.
- */
 float consultElemLinkedList(linkedList l, unsigned long long pos) {
     if (lengthLinkedList(l) == 0) {
         errorLinkedList("An element can't be consulted in an empty list.");
@@ -220,12 +189,6 @@ float consultElemLinkedList(linkedList l, unsigned long long pos) {
     return elem;
 }
 
-/**
- * FUNCTION: lengthLinkedList
- * INPUT: A dynamic list.
- * REQUIREMENTS: None.
- * OUTPUT: The length of the dynamic list.
- */
 unsigned long long lengthLinkedList(linkedList l) {
     return l.n_elem;
 }

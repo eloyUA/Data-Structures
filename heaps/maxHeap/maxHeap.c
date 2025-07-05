@@ -3,7 +3,8 @@
  * FILE: maxHeap.c
  * VERSION: 1.0.0
  * HISTORICAL: Created by Eloy Urriens on 16/1/2025
- * DESCRIPTION: This module is a max-heap. For more information: https://en.wikipedia.org/wiki/Min-max_heap
+ * DESCRIPTION: This module is a max-heap.
+ *      For more information: https://en.wikipedia.org/wiki/Min-max_heap
  * CC: SA BY
  */
 
@@ -18,12 +19,6 @@ void errorMaxHeap(char *msgError) {
 	exit(1);
 }
 
-/**
- * FUNCTION: newMaxHeap
- * INPUT: The maximum number of the elements in the maxHeap.
- * REQUIREMENTS: The int > 0.
- * OUTPUT: The empty maxHeap with maximum size (int).
- */
 void newMaxHeap(MaxHeap *m, int maxN) {
     m->numbers = (typeElem *) (malloc(maxN * sizeof(typeElem)));
     if (m->numbers == NULL)
@@ -33,12 +28,6 @@ void newMaxHeap(MaxHeap *m, int maxN) {
     m->pos = -1;
 }
 
-/**
- * FUNCTION: insertElemMaxHeap
- * INPUT: The maxHeap and the element.
- * REQUIREMENTS: The maxHeap isn't full and the elem cannot be repeat.
- * OUTPUT: The maxHeap with the element.
- */
 void insertElemMaxHeap(MaxHeap *m, typeElem elem) {
     if (isFullMaxHeap(*m))
         errorMaxHeap("The element couldn't be inserted because the maxHeap is full.");
@@ -60,12 +49,6 @@ void insertElemMaxHeap(MaxHeap *m, typeElem elem) {
     }
 }
 
-/**
- * FUNCTION: deleteElemMaxHeap
- * INPUT: The maxHeap and a element to delete.
- * REQUIREMENTS: The maxHeap isn't empty.
- * OUTPUT: The maxHeap without the element. (If it is).
- */
 void deleteElemMaxHeap(MaxHeap *m, typeElem elem) {
     if (isEmptyMaxHeap(*m))
         errorMaxHeap("The element couldn't be deleted because the maxHeap is empty.");
@@ -101,9 +84,15 @@ void deleteElemMaxHeap(MaxHeap *m, typeElem elem) {
             posParent = (posElem - 1) / 2;
         }
     }
-    else if ((posChildLeft <= m->pos || posChildRight <= m->pos) && (m->numbers[posElem] < m->numbers[posChildLeft] || m->numbers[posElem] < m->numbers[posChildRight])) {
+    else if ((posChildLeft <= m->pos || posChildRight <= m->pos) &&
+        (m->numbers[posElem] < m->numbers[posChildLeft] ||
+        m->numbers[posElem] < m->numbers[posChildRight])) {
+
         int auxPos;
-        while (posChildRight <= m->pos && (m->numbers[posElem] < m->numbers[posChildLeft] || m->numbers[posElem] < m->numbers[posChildRight])) {
+        while (posChildRight <= m->pos &&
+            (m->numbers[posElem] < m->numbers[posChildLeft] ||
+            m->numbers[posElem] < m->numbers[posChildRight])) {
+
             if (m->numbers[posChildLeft] < m->numbers[posChildRight]) {
                 auxPos = posChildRight;
             }
@@ -120,7 +109,9 @@ void deleteElemMaxHeap(MaxHeap *m, typeElem elem) {
             posChildRight = 2*posElem + 2;
         }
 
-        if (posChildRight > m->pos && posChildLeft <= m->pos && m->numbers[posElem] < m->numbers[posChildLeft]) {
+        if (posChildRight > m->pos && posChildLeft <= m->pos &&
+            m->numbers[posElem] < m->numbers[posChildLeft]) {
+                
             auxElem = m->numbers[posChildLeft];
             m->numbers[posChildLeft] = m->numbers[posElem];
             m->numbers[posElem] = auxElem;
@@ -128,12 +119,6 @@ void deleteElemMaxHeap(MaxHeap *m, typeElem elem) {
     }
 }
 
-/**
- * FUNCTION: rootMaxHeap
- * INTPUT: The maxHeap
- * REQUIREMENTS: The maxHeap isn't empty.
- * OUTPUT: The root of the maxHeap.
- */
 typeElem rootMaxHeap(MaxHeap m) {
     if (isEmptyMaxHeap(m))
         errorMaxHeap("There isn't root in the maxHeap.");
@@ -141,12 +126,6 @@ typeElem rootMaxHeap(MaxHeap m) {
     return m.numbers[0];
 }
 
-/**
- * FUNCTION: elemInMaxHeap
- * INPUT: The maxHeap and a element.
- * REQUIREMENTS: None
- * OUTPUT: True <=> The element is in the maxHeap
- */
 bool elemInMaxHeap(MaxHeap m, typeElem elem) {
     int i = 0;
     while (i < m.pos && m.numbers[i] != elem) {
@@ -156,32 +135,14 @@ bool elemInMaxHeap(MaxHeap m, typeElem elem) {
     return m.numbers[i] == elem;
 }
 
-/**
- * FUNCTION: numberElementsMaxHeap
- * INPUT: The maxHeap.
- * REQUIREMENTS: None.
- * OUTPUT: The number of the elements in maxHeap.
- */
 int numberElementsMaxHeap(MaxHeap m) {
     return m.pos + 1;
 }
 
-/**
- * FUNCTION: isEmptyMaxHeap
- * INPUT: The maxHeap.
- * REQUIREMENTS: None
- * OUTPUT: True <=> The maxHeap is empty.
- */
 bool isEmptyMaxHeap(MaxHeap m) {
     return m.pos == -1;
 }
 
-/**
- * FUNCTION: isFulMaxHeap
- * INPUT: The maxHeap.
- * REQUIREMENTS: None
- * OUTPUT: True <=> The maxHeap is full.
- */
 bool isFullMaxHeap(MaxHeap m) {
     return m.pos + 1 == m.max_numbers;
 }

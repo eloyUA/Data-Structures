@@ -31,12 +31,6 @@ void errorHashTable(char error[]) {
     }
 }
 
-/**
- * FUNCTION: newHashTable
- * INPUT: None.
- * REQUIREMENTS: None.
- * OUTPUT: A hashTable.
- */
 void newHashTable(HashTable d) {
     for (int i = 0; i < N; i++) {
         d[i] = NULL;
@@ -61,13 +55,6 @@ unsigned long long hashFunctionFNV1(char key[]) {
     return hash;
 }
 
-/**
- * FUNCTION: loadElemHashTable
- * INPUT: A hashTable, a key and a real number.
- * REQUIREMENTS: None.
- * MODIFIES: The element, whose key is key (char[]), is modificated or created by the
- *      new real number.
- */
 void loadElemHashTable(HashTable d, char key[], float value) {
     unsigned long long pos;
 
@@ -98,12 +85,6 @@ void loadElemHashTable(HashTable d, char key[], float value) {
     }
 }
 
-/**
- * FUNCTION: downloadElemHashTable
- * INPUT: A hashTable, a key.
- * REQUIREMENTS: The key must be associated with an element.
- * OUTPUT: The element (float) that is associated with the key.
- */
 void downloadElemHashTable(HashTable d, char key[], float *value) {
     unsigned long long pos;
 
@@ -128,12 +109,6 @@ void downloadElemHashTable(HashTable d, char key[], float *value) {
     }
 }
 
-/**
- * FUNCTION: deleteElemHashTable
- * INPUT: A hashTable, a key.
- * REQUIREMENTS: The key must be associated with an element.
- * MODIFIES: Delete the element that is associated with the key.
- */
 void deleteElemHashTable(HashTable d, char key[]) {
     unsigned long long pos;
 
@@ -172,12 +147,6 @@ void deleteElemHashTable(HashTable d, char key[]) {
     }
 }
 
-/**
- * FUNCTION: isAssociated
- * INPUT: A hashTable, a key.
- * REQUIREMENTS: None.
- * OUTPUT: True <=> The key is associated with some value.
- */
 bool isAssociated(HashTable d, char key[]) {
     bool associated;
     unsigned long long pos;

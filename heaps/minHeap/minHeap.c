@@ -3,7 +3,8 @@
  * FILE: minHeap.c
  * VERSION: 1.0.0
  * HISTORICAL: Created by Eloy Urriens on 16/1/2025
- * DESCRIPTION: This module is a min-heap. For more information: https://en.wikipedia.org/wiki/Min-max_heap
+ * DESCRIPTION: This module is a min-heap.
+ *      For more information:https://en.wikipedia.org/wiki/Min-max_heap
  * CC: SA BY
  */
 
@@ -18,12 +19,6 @@ void errorMinHeap(char *msgError) {
 	exit(1);
 }
 
-/**
- * FUNCTION: newMinHeap
- * INPUT: The maximum number of the elements in the minHeap.
- * REQUIREMENTS: The int > 0.
- * OUTPUT: The empty minHeap with maximum size (int).
- */
 void newMinHeap(MinHeap *m, int maxN) {
     m->numbers = (typeElem *) (malloc(maxN * sizeof(typeElem)));
     if (m->numbers == NULL)
@@ -33,12 +28,6 @@ void newMinHeap(MinHeap *m, int maxN) {
     m->pos = -1;
 }
 
-/**
- * FUNCTION: insertElemMinHeap
- * INPUT: The minHeap and the element.
- * REQUIREMENTS: The minHeap isn't full and the elem cannot be repeat.
- * OUTPUT: The minHeap with the element.
- */
 void insertElemMinHeap(MinHeap *m, typeElem elem) {
     if (isFullMinHeap(*m))
         errorMinHeap("The element couldn't be inserted because the minHeap is full.");
@@ -60,12 +49,6 @@ void insertElemMinHeap(MinHeap *m, typeElem elem) {
     }
 }
 
-/**
- * FUNCTION: deleteElemMinHeap
- * INPUT: The minHeap and a element to delete.
- * REQUIREMENTS: The minHeap isn't empty.
- * OUTPUT: The minHeap without the element. (If it is).
- */
 void deleteElemMinHeap(MinHeap *m, typeElem elem) {
     if (isEmptyMinHeap(*m))
         errorMinHeap("The element couldn't be deleted because the minHeap is empty.");
@@ -101,9 +84,15 @@ void deleteElemMinHeap(MinHeap *m, typeElem elem) {
             posParent = (posElem - 1) / 2;
         }
     }
-    else if ((posChildLeft <= m->pos || posChildRight <= m->pos) && (m->numbers[posElem] > m->numbers[posChildLeft] || m->numbers[posElem] > m->numbers[posChildRight])) {
+    else if ((posChildLeft <= m->pos || posChildRight <= m->pos) &&
+        (m->numbers[posElem] > m->numbers[posChildLeft] ||
+        m->numbers[posElem] > m->numbers[posChildRight])) {
+
         int auxPos;
-        while (posChildRight <= m->pos && (m->numbers[posElem] > m->numbers[posChildLeft] || m->numbers[posElem] > m->numbers[posChildRight])) {
+        while (posChildRight <= m->pos &&
+            (m->numbers[posElem] > m->numbers[posChildLeft] ||
+            m->numbers[posElem] > m->numbers[posChildRight])) {
+                    
             if (m->numbers[posChildLeft] > m->numbers[posChildRight]) {
                 auxPos = posChildRight;
             }
@@ -120,7 +109,9 @@ void deleteElemMinHeap(MinHeap *m, typeElem elem) {
             posChildRight = 2*posElem + 2;
         }
 
-        if (posChildRight > m->pos && posChildLeft <= m->pos && m->numbers[posElem] > m->numbers[posChildLeft]) {
+        if (posChildRight > m->pos && posChildLeft <= m->pos &&
+            m->numbers[posElem] > m->numbers[posChildLeft]) {
+
             auxElem = m->numbers[posChildLeft];
             m->numbers[posChildLeft] = m->numbers[posElem];
             m->numbers[posElem] = auxElem;
@@ -128,12 +119,6 @@ void deleteElemMinHeap(MinHeap *m, typeElem elem) {
     }
 }
 
-/**
- * FUNCTION: rootMinHeap
- * INTPUT: The minHeap
- * REQUIREMENTS: The minHeap isn't empty.
- * OUTPUT: The root of the minHeap.
- */
 typeElem rootMinHeap(MinHeap m) {
     if (isEmptyMinHeap(m))
         errorMinHeap("There isn't root in the minHeap.");
@@ -141,12 +126,6 @@ typeElem rootMinHeap(MinHeap m) {
     return m.numbers[0];
 }
 
-/**
- * FUNCTION: elemInMinHeap
- * INPUT: The minHeap and a element.
- * REQUIREMENTS: None
- * OUTPUT: True <=> The element is in the minHeap
- */
 bool elemInMinHeap(MinHeap m, typeElem elem) {
     int i = 0;
     while (i < m.pos && m.numbers[i] != elem) {
@@ -156,32 +135,14 @@ bool elemInMinHeap(MinHeap m, typeElem elem) {
     return m.numbers[i] == elem;
 }
 
-/**
- * FUNCTION: numberElementsMinHeap
- * INPUT: The minHeap.
- * REQUIREMENTS: None.
- * OUTPUT: The number of the elements in minHeap.
- */
 int numberElementsMinHeap(MinHeap m) {
     return m.pos + 1;
 }
 
-/**
- * FUNCTION: isEmptyMinHeap
- * INPUT: The minHeap.
- * REQUIREMENTS: None
- * OUTPUT: True <=> The minHeap is empty.
- */
 bool isEmptyMinHeap(MinHeap m) {
     return m.pos == -1;
 }
 
-/**
- * FUNCTION: isFulMinHeap
- * INPUT: The minHeap.
- * REQUIREMENTS: None
- * OUTPUT: True <=> The minHeap is full.
- */
 bool isFullMinHeap(MinHeap m) {
     return m.pos + 1 == m.max_numbers;
 }

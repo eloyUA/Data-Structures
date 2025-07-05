@@ -42,7 +42,9 @@ void appendLinkedList(linkedList *, float);
 /**
  * FUNCTION: insertLinkedList
  * INPUT: A dynamic list, a position and an element (float).
- * REQUIREMENTS: The length of dynamic list < 2^64, 0 <= position < length of dinamic list
+ * REQUIREMENTS:
+ *      The length of dynamic list < 2^64,
+ *      0 <= position < length of dinamic list
  * MODIFIES: Add the element (float) at the position.
  */
 void insertLinkedList(linkedList *, unsigned long long, float);

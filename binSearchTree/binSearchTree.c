@@ -19,29 +19,22 @@ void errorBinSearchTree(char *msgError) {
 	exit(1);
 }
 
-/**
- * FUNCTION: newBinSearchTree
- * OUTPUT: A binSearchTree.
- */
 void newBinSearchTree(BinSearchTree *t) {
     *t = NULL;
 }
 
-/**
- * FUNCTION: insertBinSearchTree
- * INPUT: A binSearchTree and an element.
- * OUTPUT: The binSearchTree with the element.
- */
 void insertBinSearchTree(BinSearchTree *t, typeElem elem) {
     if (isEmptyBinSearchTree(*t)) {
-        nodeBinSearchTree *auxNode = (nodeBinSearchTree *) (malloc(sizeof(nodeBinSearchTree)));
-        if (auxNode == NULL)
-            errorBinSearchTree("The element cannot be inserted because there isn't more memory in the system.");
+        nodeBinSearchTree *auxNode;
+        auxNode = (nodeBinSearchTree *) (malloc(sizeof(nodeBinSearchTree)));
+        if (auxNode == NULL) {
+            errorBinSearchTree(
+                "The element cannot be inserted because there isn't more memory.");
+        }
 
         auxNode->elem = elem;
         auxNode->leftTree = NULL;
         auxNode->rightTree = NULL;
-
         (*t) = auxNode;
     }
     else {
@@ -54,15 +47,9 @@ void insertBinSearchTree(BinSearchTree *t, typeElem elem) {
     }
 }
 
-/**
- * FUNCTION: deleteBinSearchTree
- * INPUT: A binSearchTree and an element.
- * REQUIREMENTS: The binSearchTree isn't empty.
- * OUTPUT: The binSearchTree without the element. (If the element is in the binSearchTree)
- */
 void deleteBinSearchTree(BinSearchTree *t, typeElem elem) {
     if (isEmptyBinSearchTree(*t)) {
-        
+        return;
     }
     else {
         if ((*t)->elem > elem) {
@@ -72,7 +59,8 @@ void deleteBinSearchTree(BinSearchTree *t, typeElem elem) {
             deleteBinSearchTree(&((*t)->rightTree), elem);
         }
         else {
-            if (isEmptyBinSearchTree((*t)->leftTree) && isEmptyBinSearchTree((*t)->rightTree)) { // Without child
+            if (isEmptyBinSearchTree((*t)->leftTree) &&
+                isEmptyBinSearchTree((*t)->rightTree)) { // Without child
                 free(*t);
                 *t = NULL;
             }
@@ -112,11 +100,6 @@ void deleteBinSearchTree(BinSearchTree *t, typeElem elem) {
     }
 }
 
-/**
- * FUNCTION: searchInBinSearchTree
- * INPUT: A binSearchTree and an element.
- * OUTPUT: True <=> element is in the tree
- */
 bool searchInBinSearchTree(BinSearchTree t, typeElem elem) {
     bool searched;
     if (isEmptyBinSearchTree(t)) {
@@ -136,12 +119,6 @@ bool searchInBinSearchTree(BinSearchTree t, typeElem elem) {
     return searched;
 }
 
-/**
- * FUNCTION: rootBinSearchTree
- * INPUT: A binSearchTree
- * REQUIREMENTS: The tree cannot be empty.
- * OUTPUT: The root of the tree.
- */
 typeElem rootBinSearchTree(BinSearchTree t) {
     if (isEmptyBinSearchTree(t))
         errorBinSearchTree("There isn't root in a empty tree.");
@@ -149,13 +126,6 @@ typeElem rootBinSearchTree(BinSearchTree t) {
     return t->elem;
 }
 
-/**
- * FUNCTION: leftChildBinSearchTree
- * INPUT: A binSearchTree.
- * REQUIREMENTS: The binSearchTree isn't empty.
- * OUTPUT: The left child of the binSearchTree. (ISN'T TO COPY, therefore if
- *      the returned tree is modified, then the binSheachTree changes)
- */
 BinSearchTree* leftChildBinSearchTree(BinSearchTree t) {
     if (isEmptyBinSearchTree(t))
         errorBinSearchTree("There isn't left child in a empty tree.");
@@ -163,13 +133,6 @@ BinSearchTree* leftChildBinSearchTree(BinSearchTree t) {
     return &(t->leftTree);
 }
 
-/**
- * FUNCTION: rightChildBinSearchTree
- * INPUT: A binSearchTree.
- * REQUIREMENTS: The binSearchTree isn't empty.
- * OUTPUT: The right child of the binSearchTree. (ISN'T TO COPY, therefore if
- *      the returned tree is modified, then the binSheachTree changes)
- */
 BinSearchTree* rightChildBinSearchTree(BinSearchTree t) {
     if (isEmptyBinSearchTree(t))
         errorBinSearchTree("There isn't right child in a empty tree.");
@@ -177,11 +140,6 @@ BinSearchTree* rightChildBinSearchTree(BinSearchTree t) {
     return &(t->rightTree);
 }
 
-/**
- * FUNCTION: isEmptyBinSearchTree
- * INPUT: A binSearchTree
- * OUTPUT: True <=> In the tree there aren't elements.
- */
 bool isEmptyBinSearchTree(BinSearchTree t) {
     return t == NULL;
 }

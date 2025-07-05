@@ -24,22 +24,10 @@ void errorDynamicStack(char error[]) {
     }
 }
 
-/**
- * FUNCTION: newDynamicStack
- * INPUT: None
- * REQUIREMENTS: None
- * OUTPUT: An empty dynamic stack.
-*/
 void newDynamicStack(dynamicStack *s) {
     *s = NULL;
 }
 
-/**
- * FUNCTION: pushDynamicStack
- * INPUT: A stack and a number (float).
- * REQUIREMENTS: The stack had to be initialized.
- * MODIFIES: The top of the stack is the number.
-*/
 void pushDynamicStack(dynamicStack *s, float n) {
     node *aux;
 
@@ -53,13 +41,6 @@ void pushDynamicStack(dynamicStack *s, float n) {
     *s = aux;
 }
 
-/**
- * FUNCTION: popDynamicStack
- * INPUT: A stack.
- * REQUIREMENTS: The stack had to be initialized and
- *      the stack doesn't have to be empty.
- * MODIFIES: Delete the number at the top.
-*/
 void popDynamicStack(dynamicStack *s) {
     if (isEmptyDynamicStack(*s)) {
         errorDynamicStack("Can't delete on a empty stack.");
@@ -72,23 +53,10 @@ void popDynamicStack(dynamicStack *s) {
     *s = aux;
 }
 
-/**
- * FUNCTION: top
- * INPUT: A stack.
- * REQUIREMENTS: The stack had to be initialized and
- *      the stack doesn't have to be empty.
- * OUTPUT: The number at the top.
-*/
 float topDynamicStack(dynamicStack s) {
     return s->element;
 }
 
-/**
- * FUNCTION: isEmpty
- * INPUT: A stack.
- * REQUIREMENTS: The stack had to be initialized.
- * OUTPUT: Empty stack <=> True
-*/
 bool isEmptyDynamicStack(dynamicStack s) {
     return s == NULL;
 }
